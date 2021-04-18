@@ -1,6 +1,10 @@
 const express = require("express");
 const http = require("http");
+var cors = require("cors");
+
 const app = express();
+app.use(cors());
+
 const server = http.createServer(app);
 
 const io = require("socket.io")(server, {
@@ -11,7 +15,7 @@ const io = require("socket.io")(server, {
 });
 
 app.get("/api", (req, res) => {
-  res.send({ message: "uploaded" });
+  res.send({ message: "uploaded cors" });
 });
 
 io.on("connection", (socket) => {
