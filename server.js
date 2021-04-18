@@ -1,5 +1,5 @@
 const express = require("express");
-const https = require("https");
+const https = require("http");
 var cors = require("cors");
 
 const app = express();
@@ -9,7 +9,7 @@ const server = https.createServer(app);
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://video-client-app.herokuapp.com/",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
